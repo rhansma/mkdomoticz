@@ -4,6 +4,7 @@ MAINTAINER Josh Cox <josh 'at' webhosting.coop>
 ENV MKDOMOTICZ_UPDATED=20181026
 
 ARG DOMOTICZ_VERSION="master"
+ARG OPENZWAVE_VERSION="Dev"
 
 # install packages
 RUN apt-get update && apt-get install -y \
@@ -22,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 
 ## OpenZwave installation
 # grep git version of openzwave
-git clone --depth 2 https://github.com/OpenZWave/open-zwave.git /src/open-zwave && \
+git clone -b "${OPENZWAVE_VERSION}" --depth 2 https://github.com/OpenZWave/open-zwave.git /src/open-zwave && \
 cd /src/open-zwave && \
 # compile
 make && \
